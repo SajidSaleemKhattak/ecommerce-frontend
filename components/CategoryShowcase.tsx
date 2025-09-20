@@ -61,7 +61,9 @@ export default function CategoryShowcase() {
     async function loadCategories() {
       try {
         const data = await fetchCategories();
-        setCategories(data.slice(0, 8)); // Show first 8 categories
+        // Ensure we're working with string array only
+        const stringCategories = data.filter(item => typeof item === 'string');
+        setCategories(stringCategories.slice(0, 8)); // Show first 8 categories
       } catch (error) {
         console.error('Failed to fetch categories:', error);
       } finally {

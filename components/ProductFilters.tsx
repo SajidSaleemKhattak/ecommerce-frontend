@@ -80,6 +80,7 @@ export default function ProductFilters({ filters, onFiltersChange, isOpen, onTog
 
   const formatCategoryName = (category: string) => {
     if (category === 'all') return 'All Categories';
+    if (typeof category !== 'string') return 'Category';
     return category
       .split('-')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
